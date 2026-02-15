@@ -31,7 +31,7 @@
     
     for (let i = 0; i < columns; i++) {
       drops[i] = Math.floor(Math.random() * -20) - 5;
-      speeds[i] = 2 + Math.floor(Math.random() * 5);
+      speeds[i] = 1 + Math.floor(Math.random() * 3);
       streamLengths[i] = 6 + Math.floor(Math.random() * 14);
     }
   }
@@ -66,13 +66,13 @@
           ctx.shadowBlur = 18;
           ctx.shadowColor = "rgba(180, 255, 180, 0.95)";
         } else {
-          // Tail: green gradient fading to transparent
+          // Tail: dark green gradient fading to transparent
           const t = k / (streamLengths[i] + 1);
-          const green = 180 + Math.floor(75 * (1 - t));
+          const green = 50 + Math.floor(80 * (1 - t));
           const alpha = 0.3 + (1 - t) * 0.7;
           ctx.fillStyle = "rgba(0, " + green + ", 0, " + alpha + ")";
           ctx.shadowBlur = 8;
-          ctx.shadowColor = "rgba(0, 255, 0, 0.8)";
+          ctx.shadowColor = "rgba(0, 150, 0, 0.8)";
         }
         
         ctx.font = fontSize + "px monospace";
@@ -82,12 +82,12 @@
 
     // Update per-column speeds for variety
     for (let i = 0; i < columns; i++) {
-      drops[i] += speeds[i] * 0.6;
+      drops[i] += speeds[i] * 0.3;
       
       if (drops[i] * fontSize > window.innerHeight + 10) {
         // Reset column when it falls off screen
         drops[i] = Math.floor(Math.random() * -20);
-        speeds[i] = 2 + Math.floor(Math.random() * 5);
+        speeds[i] = 1 + Math.floor(Math.random() * 3);
         streamLengths[i] = 6 + Math.floor(Math.random() * 14);
       }
     }
